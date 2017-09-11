@@ -1,4 +1,4 @@
-package org.garen.oss.swagger.api;
+package org.garen.oss.swagger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;

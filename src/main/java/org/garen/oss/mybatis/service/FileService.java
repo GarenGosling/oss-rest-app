@@ -1,7 +1,7 @@
 package org.garen.oss.mybatis.service;
 
 
-import org.garen.oss.mybatis.mapper.UserMapper;
+import org.garen.oss.mybatis.mapper.FileMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +19,12 @@ import java.io.Serializable;
  * @version 1.0
  **/
 @Service
-public class UserService<T,Q,PK extends Serializable> extends CommonsService<T, Q,PK> {
+public class FileService<T,Q,PK extends Serializable> extends CommonsService<T, Q,PK> {
 
     @Autowired
-    UserMapper<T, Q, PK> mapper;
+    FileMapper<T, Q, PK> mapper;
     @Override
-    public UserMapper<T, Q, PK> getMapper() {
+    public FileMapper<T, Q, PK> getMapper() {
         return mapper;
     }
 }
