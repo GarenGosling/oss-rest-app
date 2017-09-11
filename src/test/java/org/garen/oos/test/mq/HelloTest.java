@@ -1,4 +1,4 @@
-package org.garen.test.mq;
+package org.garen.oos.test.mq;
 
 
 import org.garen.oss.rpc.mq.publish.HelloSender;

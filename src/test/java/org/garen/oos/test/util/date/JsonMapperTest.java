@@ -1,4 +1,4 @@
-package org.garen.test.util.date;
+package org.garen.oos.test.util.date;
 
 import org.garen.oss.swagger.model.Pet;
 import org.garen.oss.util.JsonMapper;
