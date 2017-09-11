@@ -1,0 +1,183 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: 角色管理
+
+host: 127.0.0.1:7443
+basePath: /v1
+schemes:
+  - https
+#produces:
+#  - application/json
+#consumes:
+#  - application/json
+
+# Describe your paths here
+paths:
+  /role:
+    # This is a HTTP oss
+    get:
+      summary: 获取角色
+      description: |
+        获取角色
+      operationId: getRoles
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    put:
+      summary: 修改角色
+      description: |
+        修改角色
+      operationId: putRole
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: false
+          schema:
+            $ref: "#/definitions/role"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    post:
+      summary: 新增角色
+      description: |
+        新增角色
+      operationId: postRole
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: false
+          schema:
+            $ref: "#/definitions/role"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    delete:
+      summary: 删除角色
+      description: |
+        删除角色
+      operationId: deleteRole
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: false
+          schema:
+            $ref: "#/definitions/role"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /role/{roleId}:
+    get:
+      summary: 获取角色
+      description: |
+        获取角色
+      operationId: getRole
+      parameters:
+        - name: roleId
+          in: path
+          description: 组编号
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'          
+  /role/list:
+      get:
+        summary: 获取角色
+        description: |
+          获取角色
+        operationId: getRoleList
+        parameters:
+          - name: roleName
+            in: path
+            description: 角色名称
+            type: string
+        responses:
+          '200':
+            description: Successful response
+            schema:
+              $ref: '#/definitions/successModel'
+          default:
+            description: unexpected error
+            schema:
+              $ref: '#/definitions/errorModel'
+definitions:
+  role:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        maxLength: 20
+        description: 角色ID
+      name:
+        type: string
+        maxLength: 64
+        description: 角色名称
+      resource_ids:
+        type: string
+        maxLength: 1024
+        description: 功能权限拼串
+  successModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      data:
+        type: string
+  errorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
