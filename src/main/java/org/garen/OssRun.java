@@ -2,7 +2,7 @@ package org.garen;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.garen.oss.service.FileManager;
+import org.garen.oss.service.FileManage;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OssRun {
 
     @Autowired
-    private FileManager userManager;
+    private FileManage userManage;
 
 //    @RequestMapping("/")
 //    @ResponseBody
@@ -40,7 +40,7 @@ public class OssRun {
     @RequestMapping("/list")
     @ResponseBody
     String list() throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(userManager.findAll());
+        return new ObjectMapper().writeValueAsString(userManage.findAll());
     }
 
     public static void main(String[] args) {
