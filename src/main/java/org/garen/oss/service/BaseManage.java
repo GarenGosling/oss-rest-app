@@ -7,25 +7,41 @@ import org.garen.oss.mybatis.exception.DBException;
 import org.garen.oss.mybatis.service.CommonsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * <B>文件名称：</B>BaseManage<BR>
- * <B>文件描述：</B><BR>
- * <BR>
- * <B>版权声明：</B>(C)2016-2018<BR>
- * <B>公司部门：</B>东方银谷 研发二部 CBG<BR>
- * <B>创建时间：</B>2017/02/21<BR>
+ * 业务父类
  *
- * @author 吕宏业  lvhongye@yingu.com
- * @version 1.0
- **/
+ * @author Garen Gosling
+ * @create 2017-09-15 00:00
+ * @since v1.0
+ */
 public abstract class BaseManage<PK extends Serializable> {
 
     protected Logger LOGGER = LoggerFactory.getLogger(getClass());
+
+    protected static final String SAVE_SUCCESS = "新增文件类型成功,新增数量： ";
+    protected static final String UPDATE_SUCCESS = "修改文件类型成功，修改数量： ";
+    protected static final String DELETE_SUCCESS = "删除文件类型成功，删除数量： ";
+    protected static final String GET_SUCCESS = "ID查询成功";
+    protected static final String GET_ALL_SUCCESS = "查询全部成功";
+    protected static final String GET_PAGE_SUCCESS = "分页查询全部成功";
+    protected static final String GET_GENERAL_SUCCESS = "查询成功";
+    protected static final Integer START = 0;
+    protected static final Integer LENGTH = 10;
+
+    protected Map page(List list , int count){
+        Map map = new HashMap();
+        map.put("list", list);
+        map.put("count", count);
+        return map;
+    }
+
 
     private static String DB_NAME = "mysql";//ResourceBundleUtil.getConfigValue("db.name");
 

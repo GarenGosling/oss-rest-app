@@ -30,7 +30,7 @@ public interface FileTypeApi {
         @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
     @RequestMapping(value = "/fileType/all",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getAll(@ApiParam(value = "文件名称") @RequestParam(value = "name", required = false) String name);
+    ResponseEntity<SuccessModel> getAll();
 
 
     @ApiOperation(value = "通过编码查询", notes = "通过编码查询 ", response = SuccessModel.class, tags={  })
@@ -39,10 +39,10 @@ public interface FileTypeApi {
         @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
     @RequestMapping(value = "/fileType/code",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getByCode(@ApiParam(value = "文件编码") @RequestParam(value = "code", required = false) String code);
+    ResponseEntity<SuccessModel> getByCode(@ApiParam(value = "文件类型编码") @RequestParam(value = "code", required = false) String code);
 
 
-    @ApiOperation(value = "通过编码查询", notes = "通过编码查询 ", response = SuccessModel.class, tags={  })
+    @ApiOperation(value = "通过名称查询", notes = "通过名称查询 ", response = SuccessModel.class, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
         @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
@@ -90,6 +90,6 @@ public interface FileTypeApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<SuccessModel> updateFileType(@ApiParam(value = "文件类型") @RequestBody FileType sysApp);
+    ResponseEntity<SuccessModel> updateFileType(@ApiParam(value = "文件类型") @RequestBody FileType fileType);
 
 }

@@ -1,14 +1,15 @@
 package org.garen.oss.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * FileType
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-09-14T10:30:32.894Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-09-14T14:07:38.387Z")
 
 public class FileType   {
   @JsonProperty("id")
@@ -28,12 +29,6 @@ public class FileType   {
 
   @JsonProperty("available")
   private Boolean available = null;
-
-  @JsonProperty("operatorCode")
-  private String operatorCode = null;
-
-  @JsonProperty("operatorName")
-  private String operatorName = null;
 
   public FileType id(Long id) {
     this.id = id;
@@ -143,42 +138,6 @@ public class FileType   {
     this.available = available;
   }
 
-  public FileType operatorCode(String operatorCode) {
-    this.operatorCode = operatorCode;
-    return this;
-  }
-
-   /**
-   * 操作人编码
-   * @return operatorCode
-  **/
-  @ApiModelProperty(value = "操作人编码")
-  public String getOperatorCode() {
-    return operatorCode;
-  }
-
-  public void setOperatorCode(String operatorCode) {
-    this.operatorCode = operatorCode;
-  }
-
-  public FileType operatorName(String operatorName) {
-    this.operatorName = operatorName;
-    return this;
-  }
-
-   /**
-   * 操作人姓名
-   * @return operatorName
-  **/
-  @ApiModelProperty(value = "操作人姓名")
-  public String getOperatorName() {
-    return operatorName;
-  }
-
-  public void setOperatorName(String operatorName) {
-    this.operatorName = operatorName;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -194,14 +153,12 @@ public class FileType   {
         Objects.equals(this.code, fileType.code) &&
         Objects.equals(this.type, fileType.type) &&
         Objects.equals(this.maxSize, fileType.maxSize) &&
-        Objects.equals(this.available, fileType.available) &&
-        Objects.equals(this.operatorCode, fileType.operatorCode) &&
-        Objects.equals(this.operatorName, fileType.operatorName);
+        Objects.equals(this.available, fileType.available);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, code, type, maxSize, available, operatorCode, operatorName);
+    return Objects.hash(id, name, code, type, maxSize, available);
   }
 
   @Override
@@ -215,8 +172,6 @@ public class FileType   {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    maxSize: ").append(toIndentedString(maxSize)).append("\n");
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    operatorCode: ").append(toIndentedString(operatorCode)).append("\n");
-    sb.append("    operatorName: ").append(toIndentedString(operatorName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -167,8 +167,8 @@ paths:
       parameters:
         - name: code
           in: query
-          description: 文件编码
-          type: string 
+          description: 文件类型编码
+          type: string
       responses:
         '200':
           description: Successful response
@@ -180,15 +180,15 @@ paths:
             $ref: '#/definitions/errorModel'
   /fileType/name:
     get:
-      summary: 通过编码查询
+      summary: 通过名称查询
       description: |
-        通过编码查询
+        通过名称查询
       operationId: getByName
       parameters:
         - name: name
           in: query
           description: 文件类型名称
-          type: string 
+          type: string
       responses:
         '200':
           description: Successful response
@@ -197,8 +197,8 @@ paths:
         default:
           description: unexpected error
           schema:
-            $ref: '#/definitions/errorModel'            
-definitions:            
+            $ref: '#/definitions/errorModel'
+definitions:
   fileType:
     type: object
     properties:
@@ -227,14 +227,6 @@ definitions:
       available:
         type: boolean
         description: 是否使用
-      operatorCode:
-        type: string
-        maxLength: 64
-        description: 操作人编码
-      operatorName:
-        type: string
-        maxLength: 32
-        description: 操作人姓名
   successModel:
     type: object
     required:

@@ -1,4 +1,4 @@
-package org.garen.oss;
+package org.garen.oss.util;
 
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.codecs.MySQLCodec;
