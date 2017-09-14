@@ -18,12 +18,12 @@ public class SwaggerDocumentationConfig {
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("后台系统模板")
-            .description("这是一个后台系统模板，搭建后台系统可以参考这个系统配置。")
+            .title("文件系統接口")
+            .description("文件类型配置、最大允许上传的文件大小、是否允许某类型文件操作、文件归类、文件上传、文件下载等功能")
             .license("Garen Gosling\t\t13552979387@139.com")
             .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
             .termsOfServiceUrl("")
-            .version("1.0.0")
+            .version("v1.0")
             .contact(new Contact("","", "apiteam@swagger.io"))
             .build();
     }
