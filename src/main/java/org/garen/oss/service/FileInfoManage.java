@@ -1,8 +1,8 @@
 package org.garen.oss.service;
 
-import org.garen.oss.mybatis.domain.File;
-import org.garen.oss.mybatis.domain.FileQuery;
-import org.garen.oss.mybatis.service.FileService;
+import org.garen.oss.mybatis.domain.FileInfo;
+import org.garen.oss.mybatis.domain.FileInfoExample;
+import org.garen.oss.mybatis.service.FileInfoService;
 import org.garen.oss.util.upload.UploadHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +14,18 @@ import java.io.IOException;
  * Created by Administrator on 2017/8/23.
  */
 @Service
-public class FileManage extends BaseManage<Long>{
+public class FileInfoManage extends BaseManage<Long>{
     @Autowired
-    private FileService<File, FileQuery, Long> service;
+    private FileInfoService<FileInfo, FileInfoExample, Long> service;
 
     @Override
-    public FileService<File, FileQuery, Long> getService() {
+    public FileInfoService<FileInfo, FileInfoExample, Long> getService() {
         return service;
     }
 
 
-    public File upload(MultipartFile multipartFile) throws IOException {
-        File fileInfo = new File();
+    public FileInfo upload(MultipartFile multipartFile) throws IOException {
+        FileInfo fileInfo = new FileInfo();
         fileInfo.setName(multipartFile.getName());
         fileInfo.setMd5(UploadHandler.getMd5(multipartFile));
 
