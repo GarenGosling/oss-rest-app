@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="max_size" jdbcType="INTEGER" property="maxSize" />
     <result column="available" jdbcType="VARCHAR" property="available" />
     <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
     <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
@@ -71,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, code, type, available, operator_code, operator_name, create_time, update_time
+    id, name, code, type, max_size, available, operator_code, operator_name, create_time, 
+    update_time
   </sql>
   <select id="selectByExample" parameterType="org.garen.oss.mybatis.domain.FileTypeExample" resultMap="BaseResultMap">
     select
@@ -116,11 +118,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into file_type (name, code, type, 
-      available, operator_code, operator_name, 
-      create_time, update_time)
+      max_size, available, operator_code, 
+      operator_name, create_time, update_time
+      )
     values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{available,jdbcType=VARCHAR}, #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{maxSize,jdbcType=INTEGER}, #{available,jdbcType=VARCHAR}, #{operatorCode,jdbcType=VARCHAR}, 
+      #{operatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.garen.oss.mybatis.domain.FileType">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -136,6 +140,9 @@
       </if>
       <if test="type != null">
         type,
+      </if>
+      <if test="maxSize != null">
+        max_size,
       </if>
       <if test="available != null">
         available,
@@ -162,6 +169,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="maxSize != null">
+        #{maxSize,jdbcType=INTEGER},
       </if>
       <if test="available != null">
         #{available,jdbcType=VARCHAR},
@@ -201,6 +211,9 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
+      <if test="record.maxSize != null">
+        max_size = #{record.maxSize,jdbcType=INTEGER},
+      </if>
       <if test="record.available != null">
         available = #{record.available,jdbcType=VARCHAR},
       </if>
@@ -227,6 +240,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       code = #{record.code,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
+      max_size = #{record.maxSize,jdbcType=INTEGER},
       available = #{record.available,jdbcType=VARCHAR},
       operator_code = #{record.operatorCode,jdbcType=VARCHAR},
       operator_name = #{record.operatorName,jdbcType=VARCHAR},
@@ -247,6 +261,9 @@
       </if>
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="maxSize != null">
+        max_size = #{maxSize,jdbcType=INTEGER},
       </if>
       <if test="available != null">
         available = #{available,jdbcType=VARCHAR},
@@ -271,6 +288,7 @@
     set name = #{name,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
+      max_size = #{maxSize,jdbcType=INTEGER},
       available = #{available,jdbcType=VARCHAR},
       operator_code = #{operatorCode,jdbcType=VARCHAR},
       operator_name = #{operatorName,jdbcType=VARCHAR},

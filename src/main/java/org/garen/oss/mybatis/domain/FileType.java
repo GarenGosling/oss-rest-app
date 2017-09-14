@@ -28,6 +28,11 @@ public class FileType implements Serializable {
     private String type;
 
     /**
+     * 最大允许的文件大小
+     */
+    private Integer maxSize;
+
+    /**
      * 是否使用
      */
     private String available;
@@ -86,6 +91,14 @@ public class FileType implements Serializable {
         this.type = type;
     }
 
+    public Integer getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(Integer maxSize) {
+        this.maxSize = maxSize;
+    }
+
     public String getAvailable() {
         return available;
     }
@@ -142,6 +155,7 @@ public class FileType implements Serializable {
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
             && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
+            && (this.getMaxSize() == null ? other.getMaxSize() == null : this.getMaxSize().equals(other.getMaxSize()))
             && (this.getAvailable() == null ? other.getAvailable() == null : this.getAvailable().equals(other.getAvailable()))
             && (this.getOperatorCode() == null ? other.getOperatorCode() == null : this.getOperatorCode().equals(other.getOperatorCode()))
             && (this.getOperatorName() == null ? other.getOperatorName() == null : this.getOperatorName().equals(other.getOperatorName()))
@@ -157,6 +171,7 @@ public class FileType implements Serializable {
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
         result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
+        result = prime * result + ((getMaxSize() == null) ? 0 : getMaxSize().hashCode());
         result = prime * result + ((getAvailable() == null) ? 0 : getAvailable().hashCode());
         result = prime * result + ((getOperatorCode() == null) ? 0 : getOperatorCode().hashCode());
         result = prime * result + ((getOperatorName() == null) ? 0 : getOperatorName().hashCode());
@@ -175,6 +190,7 @@ public class FileType implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", code=").append(code);
         sb.append(", type=").append(type);
+        sb.append(", maxSize=").append(maxSize);
         sb.append(", available=").append(available);
         sb.append(", operatorCode=").append(operatorCode);
         sb.append(", operatorName=").append(operatorName);

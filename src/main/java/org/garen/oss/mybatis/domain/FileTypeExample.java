@@ -395,6 +395,66 @@ public class FileTypeExample {
             return (Criteria) this;
         }
 
+        public Criteria andMaxSizeIsNull() {
+            addCriterion("max_size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeIsNotNull() {
+            addCriterion("max_size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeEqualTo(Integer value) {
+            addCriterion("max_size =", value, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeNotEqualTo(Integer value) {
+            addCriterion("max_size <>", value, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeGreaterThan(Integer value) {
+            addCriterion("max_size >", value, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("max_size >=", value, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeLessThan(Integer value) {
+            addCriterion("max_size <", value, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeLessThanOrEqualTo(Integer value) {
+            addCriterion("max_size <=", value, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeIn(List<Integer> values) {
+            addCriterion("max_size in", values, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeNotIn(List<Integer> values) {
+            addCriterion("max_size not in", values, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeBetween(Integer value1, Integer value2) {
+            addCriterion("max_size between", value1, value2, "maxSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxSizeNotBetween(Integer value1, Integer value2) {
+            addCriterion("max_size not between", value1, value2, "maxSize");
+            return (Criteria) this;
+        }
+
         public Criteria andAvailableIsNull() {
             addCriterion("available is null");
             return (Criteria) this;
