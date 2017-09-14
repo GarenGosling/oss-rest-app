@@ -1,0 +1,267 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: 文件系统接口
+
+# host: 127.0.0.1:7443
+# basePath: /v1
+# schemes:
+#   - http
+#produces:
+#  - application/json
+#consumes:
+#  - application/json
+
+# Describe your paths here
+paths:
+  /fileType:
+    post:
+      summary: 新增文件类型
+      description: |
+              新增文件类型
+      operationId: saveFileType
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: fileType
+          description: 文件类型
+          schema:
+            $ref: "#/definitions/fileType"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    put:
+      summary: 修改文件类型
+      description: |
+              修改文件类型
+      operationId: updateFileType
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: sysApp
+          description: 文件类型
+          schema:
+            $ref: "#/definitions/fileType"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    delete:
+      summary: 删除文件类型
+      description: |
+              删除文件类型
+      operationId: deleteFileType
+      parameters:
+        - in: query
+          name: id
+          description: 文件类型ID
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'  
+    get:
+      summary: ID查询
+      description: |
+              ID查询
+      operationId: getFileType
+      parameters:
+        - in: query
+          name: id
+          description: 文件类型ID
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'          
+  /fileType/page:
+    get:
+      summary: 分页查询文件类型
+      description: |
+        分页查询文件类型
+      operationId: getByPage
+      parameters:
+        - name: start
+          in: query
+          description: 分页开始索引
+          type: integer
+          format: int32
+        - name: length
+          in: query
+          description: 每页数量
+          type: integer
+          format: int32  
+        - name: name
+          in: query
+          description: 文件名称
+          type: string  
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /fileType/all:
+    get:
+      summary: 查询全部
+      description: |
+        查询全部
+      operationId: getAll
+      parameters:
+        - name: name
+          in: query
+          description: 文件名称
+          type: string 
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /fileType/code:
+    get:
+      summary: 通过编码查询
+      description: |
+        通过编码查询
+      operationId: getByCode
+      parameters:
+        - name: code
+          in: query
+          description: 文件编码
+          type: string 
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /fileType/name:
+    get:
+      summary: 通过编码查询
+      description: |
+        通过编码查询
+      operationId: getByName
+      parameters:
+        - name: name
+          in: query
+          description: 文件类型名称
+          type: string 
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'            
+definitions:            
+  fileType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        maxLength: 20
+        description: ID
+      name:
+        type: string
+        maxLength: 32
+        description: 名称
+      code:
+        type: string
+        maxLength: 64
+        description: 编码
+      type:
+        type: string
+        maxLength: 32
+        description: 分类
+      maxSize:
+        type: integer
+        format: int32
+        maxLength: 11
+        description: 最大允许的文件大小
+      available:
+        type: boolean
+        description: 是否使用
+      operatorCode:
+        type: string
+        maxLength: 64
+        description: 操作人编码
+      operatorName:
+        type: string
+        maxLength: 32
+        description: 操作人姓名
+  successModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      data:
+        type: string
+  errorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /garen.org/oss/1.0.0
+schemes:
+ - https
+ - http
