@@ -465,62 +465,52 @@ public class FileTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andAvailableEqualTo(String value) {
+        public Criteria andAvailableEqualTo(Boolean value) {
             addCriterion("available =", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableNotEqualTo(String value) {
+        public Criteria andAvailableNotEqualTo(Boolean value) {
             addCriterion("available <>", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableGreaterThan(String value) {
+        public Criteria andAvailableGreaterThan(Boolean value) {
             addCriterion("available >", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableGreaterThanOrEqualTo(String value) {
+        public Criteria andAvailableGreaterThanOrEqualTo(Boolean value) {
             addCriterion("available >=", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableLessThan(String value) {
+        public Criteria andAvailableLessThan(Boolean value) {
             addCriterion("available <", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableLessThanOrEqualTo(String value) {
+        public Criteria andAvailableLessThanOrEqualTo(Boolean value) {
             addCriterion("available <=", value, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableLike(String value) {
-            addCriterion("available like", value, "available");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvailableNotLike(String value) {
-            addCriterion("available not like", value, "available");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvailableIn(List<String> values) {
+        public Criteria andAvailableIn(List<Boolean> values) {
             addCriterion("available in", values, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableNotIn(List<String> values) {
+        public Criteria andAvailableNotIn(List<Boolean> values) {
             addCriterion("available not in", values, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableBetween(String value1, String value2) {
+        public Criteria andAvailableBetween(Boolean value1, Boolean value2) {
             addCriterion("available between", value1, value2, "available");
             return (Criteria) this;
         }
 
-        public Criteria andAvailableNotBetween(String value1, String value2) {
+        public Criteria andAvailableNotBetween(Boolean value1, Boolean value2) {
             addCriterion("available not between", value1, value2, "available");
             return (Criteria) this;
         }

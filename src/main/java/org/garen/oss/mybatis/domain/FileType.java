@@ -35,7 +35,7 @@ public class FileType implements Serializable {
     /**
      * 是否使用
      */
-    private String available;
+    private Boolean available;
 
     /**
      * 操作人编码
@@ -99,11 +99,11 @@ public class FileType implements Serializable {
         this.maxSize = maxSize;
     }
 
-    public String getAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(String available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 

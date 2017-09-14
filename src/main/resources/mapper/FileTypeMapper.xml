@@ -7,7 +7,7 @@
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="max_size" jdbcType="INTEGER" property="maxSize" />
-    <result column="available" jdbcType="VARCHAR" property="available" />
+    <result column="available" jdbcType="BIT" property="available" />
     <result column="operator_code" jdbcType="VARCHAR" property="operatorCode" />
     <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -122,7 +122,7 @@
       operator_name, create_time, update_time
       )
     values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{maxSize,jdbcType=INTEGER}, #{available,jdbcType=VARCHAR}, #{operatorCode,jdbcType=VARCHAR}, 
+      #{maxSize,jdbcType=INTEGER}, #{available,jdbcType=BIT}, #{operatorCode,jdbcType=VARCHAR}, 
       #{operatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -174,7 +174,7 @@
         #{maxSize,jdbcType=INTEGER},
       </if>
       <if test="available != null">
-        #{available,jdbcType=VARCHAR},
+        #{available,jdbcType=BIT},
       </if>
       <if test="operatorCode != null">
         #{operatorCode,jdbcType=VARCHAR},
@@ -215,7 +215,7 @@
         max_size = #{record.maxSize,jdbcType=INTEGER},
       </if>
       <if test="record.available != null">
-        available = #{record.available,jdbcType=VARCHAR},
+        available = #{record.available,jdbcType=BIT},
       </if>
       <if test="record.operatorCode != null">
         operator_code = #{record.operatorCode,jdbcType=VARCHAR},
@@ -241,7 +241,7 @@
       code = #{record.code,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
       max_size = #{record.maxSize,jdbcType=INTEGER},
-      available = #{record.available,jdbcType=VARCHAR},
+      available = #{record.available,jdbcType=BIT},
       operator_code = #{record.operatorCode,jdbcType=VARCHAR},
       operator_name = #{record.operatorName,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -266,7 +266,7 @@
         max_size = #{maxSize,jdbcType=INTEGER},
       </if>
       <if test="available != null">
-        available = #{available,jdbcType=VARCHAR},
+        available = #{available,jdbcType=BIT},
       </if>
       <if test="operatorCode != null">
         operator_code = #{operatorCode,jdbcType=VARCHAR},
@@ -289,7 +289,7 @@
       code = #{code,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       max_size = #{maxSize,jdbcType=INTEGER},
-      available = #{available,jdbcType=VARCHAR},
+      available = #{available,jdbcType=BIT},
       operator_code = #{operatorCode,jdbcType=VARCHAR},
       operator_name = #{operatorName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
