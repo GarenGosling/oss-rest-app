@@ -1,0 +1,303 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: 文件系统接口
+
+# host: 127.0.0.1:7443
+# basePath: /v1
+# schemes:
+#   - http
+#produces:
+#  - application/json
+#consumes:
+#  - application/json
+
+# Describe your paths here
+paths:
+  /fileInfo:
+    post:
+      summary: 新增文件信息
+      description: |
+              新增文件信息
+      operationId: saveFileInfo
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: fileInfo
+          description: 文件信息
+          schema:
+            $ref: "#/definitions/fileInfo"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    put:
+      summary: 修改文件信息
+      description: |
+              修改文件信息
+      operationId: updateFileInfo
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: fileInfo
+          description: 文件信息
+          schema:
+            $ref: "#/definitions/fileInfo"
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    delete:
+      summary: 删除文件信息
+      description: |
+              删除文件信息
+      operationId: deleteFileInfo
+      parameters:
+        - in: query
+          name: id
+          description: 文件信息ID
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'  
+    get:
+      summary: ID查询
+      description: |
+              ID查询
+      operationId: getFileInfo
+      parameters:
+        - in: query
+          name: id
+          description: 文件信息ID
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'          
+  /fileInfo/page:
+    get:
+      summary: 分页查询文件信息
+      description: |
+        分页查询文件类型
+      operationId: getByPage
+      parameters:
+        - name: start
+          in: query
+          type: integer
+          format: int32
+          description: 分页开始索引
+        - name: length
+          in: query
+          type: integer
+          format: int32  
+          description: 每页数量
+        - name: name
+          in: query
+          type: string  
+          description: 文件名称
+        - name: type
+          in: query
+          type: string    
+          description: 文件类型
+        - name: category
+          in: query
+          type: string   
+          description: 文件种类
+        - name: sizeBegin
+          in: query
+          type: integer
+          format: int64
+          description: 文件大小从
+        - name: sizeEnd
+          in: query
+          type: integer
+          format: int64  
+          description: 文件大小至
+        - name: md5
+          in: query
+          type: string      
+          description: 文件MD5值
+        - name: minMd5
+          in: query
+          type: string  
+          description: 文件缩略图MD5值
+        - name: createTimeBegin
+          in: query
+          type: string 
+          description: 创建时间从
+        - name: createTimeEnd
+          in: query
+          type: string   
+          description: 创建时间至
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /fileInfo/all:
+    get:
+      summary: 查询全部
+      description: |
+        查询全部
+      operationId: getAll
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /fileInfo/md5:
+    get:
+      summary: 通过md5查询
+      description: |
+        通过md5查询
+      operationId: getByMd5
+      parameters:
+        - name: md5
+          in: query
+          description: md5
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  /fileInfo/minMd5:
+    get:
+      summary: 通过minMd5查询
+      description: |
+        通过名称查询
+      operationId: getByMinMd5
+      parameters:
+        - name: minMd5
+          in: query
+          description: minMd5
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/successModel'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+definitions:
+  fileInfo:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        maxLength: 20
+        description: ID
+      name:
+        type: string
+        maxLength: 32
+        description: 文件名
+      type:
+        type: string
+        maxLength: 10
+        description: 文件类型（jpg、png等）
+      category:
+        type: string
+        maxLength: 32
+        description: 文件种类（picture、video等）
+      size:
+        type: integer
+        format: int64
+        maxLength: 20
+        description: 文件大小
+      md5:
+        type: string
+        maxLength: 64
+        description: 文件MD5值
+      minMd5:
+        type: string
+        maxLength: 64
+        description: 文件缩略图MD5值
+      preview:
+        type: string
+        maxLength: 1024
+        description: 文件下载路径
+      minPreview:
+        type: string
+        maxLength: 1024
+        description: 文件缩略图下载路径
+  successModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      data:
+        type: string
+  errorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+# basePath: /garen.org/oss/1.0.0
+schemes:
+ - https
+ - http
+# Added by API Auto Mocking Plugin
+basePath: /garen.org/oss-fileInfo/1.0.0

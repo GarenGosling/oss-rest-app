@@ -255,6 +255,206 @@ public class FileInfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeEqualTo(String value) {
+            addCriterion("type =", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotEqualTo(String value) {
+            addCriterion("type <>", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThan(String value) {
+            addCriterion("type >", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("type >=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThan(String value) {
+            addCriterion("type <", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThanOrEqualTo(String value) {
+            addCriterion("type <=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLike(String value) {
+            addCriterion("type like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("type not like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<String> values) {
+            addCriterion("type in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotIn(List<String> values) {
+            addCriterion("type not in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeBetween(String value1, String value2) {
+            addCriterion("type between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotBetween(String value1, String value2) {
+            addCriterion("type not between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryIsNull() {
+            addCriterion("category is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryIsNotNull() {
+            addCriterion("category is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryEqualTo(String value) {
+            addCriterion("category =", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotEqualTo(String value) {
+            addCriterion("category <>", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryGreaterThan(String value) {
+            addCriterion("category >", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryGreaterThanOrEqualTo(String value) {
+            addCriterion("category >=", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryLessThan(String value) {
+            addCriterion("category <", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryLessThanOrEqualTo(String value) {
+            addCriterion("category <=", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryLike(String value) {
+            addCriterion("category like", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotLike(String value) {
+            addCriterion("category not like", value, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryIn(List<String> values) {
+            addCriterion("category in", values, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotIn(List<String> values) {
+            addCriterion("category not in", values, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryBetween(String value1, String value2) {
+            addCriterion("category between", value1, value2, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andCategoryNotBetween(String value1, String value2) {
+            addCriterion("category not between", value1, value2, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeIsNull() {
+            addCriterion("size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeIsNotNull() {
+            addCriterion("size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeEqualTo(Long value) {
+            addCriterion("size =", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeNotEqualTo(Long value) {
+            addCriterion("size <>", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeGreaterThan(Long value) {
+            addCriterion("size >", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeGreaterThanOrEqualTo(Long value) {
+            addCriterion("size >=", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeLessThan(Long value) {
+            addCriterion("size <", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeLessThanOrEqualTo(Long value) {
+            addCriterion("size <=", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeIn(List<Long> values) {
+            addCriterion("size in", values, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeNotIn(List<Long> values) {
+            addCriterion("size not in", values, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeBetween(Long value1, Long value2) {
+            addCriterion("size between", value1, value2, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeNotBetween(Long value1, Long value2) {
+            addCriterion("size not between", value1, value2, "size");
+            return (Criteria) this;
+        }
+
         public Criteria andMd5IsNull() {
             addCriterion("md5 is null");
             return (Criteria) this;
@@ -325,133 +525,73 @@ public class FileInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andSuffixIsNull() {
-            addCriterion("suffix is null");
+        public Criteria andMinMd5IsNull() {
+            addCriterion("min_md5 is null");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixIsNotNull() {
-            addCriterion("suffix is not null");
+        public Criteria andMinMd5IsNotNull() {
+            addCriterion("min_md5 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixEqualTo(String value) {
-            addCriterion("suffix =", value, "suffix");
+        public Criteria andMinMd5EqualTo(String value) {
+            addCriterion("min_md5 =", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixNotEqualTo(String value) {
-            addCriterion("suffix <>", value, "suffix");
+        public Criteria andMinMd5NotEqualTo(String value) {
+            addCriterion("min_md5 <>", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixGreaterThan(String value) {
-            addCriterion("suffix >", value, "suffix");
+        public Criteria andMinMd5GreaterThan(String value) {
+            addCriterion("min_md5 >", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixGreaterThanOrEqualTo(String value) {
-            addCriterion("suffix >=", value, "suffix");
+        public Criteria andMinMd5GreaterThanOrEqualTo(String value) {
+            addCriterion("min_md5 >=", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixLessThan(String value) {
-            addCriterion("suffix <", value, "suffix");
+        public Criteria andMinMd5LessThan(String value) {
+            addCriterion("min_md5 <", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixLessThanOrEqualTo(String value) {
-            addCriterion("suffix <=", value, "suffix");
+        public Criteria andMinMd5LessThanOrEqualTo(String value) {
+            addCriterion("min_md5 <=", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixLike(String value) {
-            addCriterion("suffix like", value, "suffix");
+        public Criteria andMinMd5Like(String value) {
+            addCriterion("min_md5 like", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixNotLike(String value) {
-            addCriterion("suffix not like", value, "suffix");
+        public Criteria andMinMd5NotLike(String value) {
+            addCriterion("min_md5 not like", value, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixIn(List<String> values) {
-            addCriterion("suffix in", values, "suffix");
+        public Criteria andMinMd5In(List<String> values) {
+            addCriterion("min_md5 in", values, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixNotIn(List<String> values) {
-            addCriterion("suffix not in", values, "suffix");
+        public Criteria andMinMd5NotIn(List<String> values) {
+            addCriterion("min_md5 not in", values, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixBetween(String value1, String value2) {
-            addCriterion("suffix between", value1, value2, "suffix");
+        public Criteria andMinMd5Between(String value1, String value2) {
+            addCriterion("min_md5 between", value1, value2, "minMd5");
             return (Criteria) this;
         }
 
-        public Criteria andSuffixNotBetween(String value1, String value2) {
-            addCriterion("suffix not between", value1, value2, "suffix");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeIsNull() {
-            addCriterion("size is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeIsNotNull() {
-            addCriterion("size is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeEqualTo(Long value) {
-            addCriterion("size =", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeNotEqualTo(Long value) {
-            addCriterion("size <>", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeGreaterThan(Long value) {
-            addCriterion("size >", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeGreaterThanOrEqualTo(Long value) {
-            addCriterion("size >=", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeLessThan(Long value) {
-            addCriterion("size <", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeLessThanOrEqualTo(Long value) {
-            addCriterion("size <=", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeIn(List<Long> values) {
-            addCriterion("size in", values, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeNotIn(List<Long> values) {
-            addCriterion("size not in", values, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeBetween(Long value1, Long value2) {
-            addCriterion("size between", value1, value2, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeNotBetween(Long value1, Long value2) {
-            addCriterion("size not between", value1, value2, "size");
+        public Criteria andMinMd5NotBetween(String value1, String value2) {
+            addCriterion("min_md5 not between", value1, value2, "minMd5");
             return (Criteria) this;
         }
 
@@ -522,76 +662,6 @@ public class FileInfoExample {
 
         public Criteria andPreviewNotBetween(String value1, String value2) {
             addCriterion("preview not between", value1, value2, "preview");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5IsNull() {
-            addCriterion("min_md5 is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5IsNotNull() {
-            addCriterion("min_md5 is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5EqualTo(String value) {
-            addCriterion("min_md5 =", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5NotEqualTo(String value) {
-            addCriterion("min_md5 <>", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5GreaterThan(String value) {
-            addCriterion("min_md5 >", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5GreaterThanOrEqualTo(String value) {
-            addCriterion("min_md5 >=", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5LessThan(String value) {
-            addCriterion("min_md5 <", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5LessThanOrEqualTo(String value) {
-            addCriterion("min_md5 <=", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5Like(String value) {
-            addCriterion("min_md5 like", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5NotLike(String value) {
-            addCriterion("min_md5 not like", value, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5In(List<String> values) {
-            addCriterion("min_md5 in", values, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5NotIn(List<String> values) {
-            addCriterion("min_md5 not in", values, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5Between(String value1, String value2) {
-            addCriterion("min_md5 between", value1, value2, "minMd5");
-            return (Criteria) this;
-        }
-
-        public Criteria andMinMd5NotBetween(String value1, String value2) {
-            addCriterion("min_md5 not between", value1, value2, "minMd5");
             return (Criteria) this;
         }
 

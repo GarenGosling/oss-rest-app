@@ -4,11 +4,12 @@
   <resultMap id="BaseResultMap" type="org.garen.oss.mybatis.domain.FileInfo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="md5" jdbcType="VARCHAR" property="md5" />
-    <result column="suffix" jdbcType="VARCHAR" property="suffix" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="size" jdbcType="BIGINT" property="size" />
-    <result column="preview" jdbcType="VARCHAR" property="preview" />
+    <result column="md5" jdbcType="VARCHAR" property="md5" />
     <result column="min_md5" jdbcType="VARCHAR" property="minMd5" />
+    <result column="preview" jdbcType="VARCHAR" property="preview" />
     <result column="min_preview" jdbcType="VARCHAR" property="minPreview" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -72,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, md5, suffix, size, preview, min_md5, min_preview, create_time, update_time
+    id, name, type, category, size, md5, min_md5, preview, min_preview, create_time, 
+    update_time
   </sql>
   <select id="selectByExample" parameterType="org.garen.oss.mybatis.domain.FileInfoExample" resultMap="BaseResultMap">
     select
@@ -116,12 +118,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into file_info (name, md5, suffix, 
-      size, preview, min_md5, 
+    insert into file_info (name, type, category, 
+      size, md5, min_md5, preview, 
       min_preview, create_time, update_time
       )
-    values (#{name,jdbcType=VARCHAR}, #{md5,jdbcType=VARCHAR}, #{suffix,jdbcType=VARCHAR}, 
-      #{size,jdbcType=BIGINT}, #{preview,jdbcType=VARCHAR}, #{minMd5,jdbcType=VARCHAR}, 
+    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{size,jdbcType=BIGINT}, #{md5,jdbcType=VARCHAR}, #{minMd5,jdbcType=VARCHAR}, #{preview,jdbcType=VARCHAR}, 
       #{minPreview,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -134,20 +136,23 @@
       <if test="name != null">
         name,
       </if>
-      <if test="md5 != null">
-        md5,
+      <if test="type != null">
+        type,
       </if>
-      <if test="suffix != null">
-        suffix,
+      <if test="category != null">
+        category,
       </if>
       <if test="size != null">
         size,
       </if>
-      <if test="preview != null">
-        preview,
+      <if test="md5 != null">
+        md5,
       </if>
       <if test="minMd5 != null">
         min_md5,
+      </if>
+      <if test="preview != null">
+        preview,
       </if>
       <if test="minPreview != null">
         min_preview,
@@ -163,20 +168,23 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="md5 != null">
-        #{md5,jdbcType=VARCHAR},
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
       </if>
-      <if test="suffix != null">
-        #{suffix,jdbcType=VARCHAR},
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
       </if>
       <if test="size != null">
         #{size,jdbcType=BIGINT},
       </if>
-      <if test="preview != null">
-        #{preview,jdbcType=VARCHAR},
+      <if test="md5 != null">
+        #{md5,jdbcType=VARCHAR},
       </if>
       <if test="minMd5 != null">
         #{minMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="preview != null">
+        #{preview,jdbcType=VARCHAR},
       </if>
       <if test="minPreview != null">
         #{minPreview,jdbcType=VARCHAR},
@@ -204,20 +212,23 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.md5 != null">
-        md5 = #{record.md5,jdbcType=VARCHAR},
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
       </if>
-      <if test="record.suffix != null">
-        suffix = #{record.suffix,jdbcType=VARCHAR},
+      <if test="record.category != null">
+        category = #{record.category,jdbcType=VARCHAR},
       </if>
       <if test="record.size != null">
         size = #{record.size,jdbcType=BIGINT},
       </if>
-      <if test="record.preview != null">
-        preview = #{record.preview,jdbcType=VARCHAR},
+      <if test="record.md5 != null">
+        md5 = #{record.md5,jdbcType=VARCHAR},
       </if>
       <if test="record.minMd5 != null">
         min_md5 = #{record.minMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preview != null">
+        preview = #{record.preview,jdbcType=VARCHAR},
       </if>
       <if test="record.minPreview != null">
         min_preview = #{record.minPreview,jdbcType=VARCHAR},
@@ -237,11 +248,12 @@
     update file_info
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
-      md5 = #{record.md5,jdbcType=VARCHAR},
-      suffix = #{record.suffix,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=VARCHAR},
       size = #{record.size,jdbcType=BIGINT},
-      preview = #{record.preview,jdbcType=VARCHAR},
+      md5 = #{record.md5,jdbcType=VARCHAR},
       min_md5 = #{record.minMd5,jdbcType=VARCHAR},
+      preview = #{record.preview,jdbcType=VARCHAR},
       min_preview = #{record.minPreview,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -255,20 +267,23 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="md5 != null">
-        md5 = #{md5,jdbcType=VARCHAR},
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="suffix != null">
-        suffix = #{suffix,jdbcType=VARCHAR},
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
       </if>
       <if test="size != null">
         size = #{size,jdbcType=BIGINT},
       </if>
-      <if test="preview != null">
-        preview = #{preview,jdbcType=VARCHAR},
+      <if test="md5 != null">
+        md5 = #{md5,jdbcType=VARCHAR},
       </if>
       <if test="minMd5 != null">
         min_md5 = #{minMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="preview != null">
+        preview = #{preview,jdbcType=VARCHAR},
       </if>
       <if test="minPreview != null">
         min_preview = #{minPreview,jdbcType=VARCHAR},
@@ -285,11 +300,12 @@
   <update id="updateByPrimaryKey" parameterType="org.garen.oss.mybatis.domain.FileInfo">
     update file_info
     set name = #{name,jdbcType=VARCHAR},
-      md5 = #{md5,jdbcType=VARCHAR},
-      suffix = #{suffix,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
       size = #{size,jdbcType=BIGINT},
-      preview = #{preview,jdbcType=VARCHAR},
+      md5 = #{md5,jdbcType=VARCHAR},
       min_md5 = #{minMd5,jdbcType=VARCHAR},
+      preview = #{preview,jdbcType=VARCHAR},
       min_preview = #{minPreview,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

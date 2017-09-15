@@ -2,10 +2,6 @@ package org.garen.oss.util.upload;
 
 import org.garen.oss.file.type.FileType;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
  * 类型帮助类
  *
@@ -71,10 +67,10 @@ public class TypeHandler {
         return type;
     }
 
-    public static void main(String args[]) throws Exception {
-        // System.out.println(FileTypeJudge.getType(new FileInputStream("")));
-        for (FileType type : FileType.values()) {
-            System.out.print(type + "\t");
-        }
-    }
+//    public static void main(String args[]) throws Exception {
+//        // System.out.println(FileTypeJudge.getType(new FileInputStream("")));
+//        for (FileType type : FileType.values()) {
+//            System.out.print(type + "\t");
+//        }
+//    }
 }

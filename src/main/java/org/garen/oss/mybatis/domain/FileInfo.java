@@ -18,14 +18,14 @@ public class FileInfo implements Serializable {
     private String name;
 
     /**
-     * 文件MD5值
+     * 文件类型（jpg、png等）
      */
-    private String md5;
+    private String type;
 
     /**
-     * 文件后缀
+     * 文件种类（picture、video等）
      */
-    private String suffix;
+    private String category;
 
     /**
      * 文件大小
@@ -33,14 +33,19 @@ public class FileInfo implements Serializable {
     private Long size;
 
     /**
-     * 文件下载路径
+     * 文件MD5值
      */
-    private String preview;
+    private String md5;
 
     /**
      * 文件缩略图MD5值
      */
     private String minMd5;
+
+    /**
+     * 文件下载路径
+     */
+    private String preview;
 
     /**
      * 文件缩略图下载路径
@@ -75,20 +80,20 @@ public class FileInfo implements Serializable {
         this.name = name;
     }
 
-    public String getMd5() {
-        return md5;
+    public String getType() {
+        return type;
     }
 
-    public void setMd5(String md5) {
-        this.md5 = md5;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getSuffix() {
-        return suffix;
+    public String getCategory() {
+        return category;
     }
 
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Long getSize() {
@@ -99,12 +104,12 @@ public class FileInfo implements Serializable {
         this.size = size;
     }
 
-    public String getPreview() {
-        return preview;
+    public String getMd5() {
+        return md5;
     }
 
-    public void setPreview(String preview) {
-        this.preview = preview;
+    public void setMd5(String md5) {
+        this.md5 = md5;
     }
 
     public String getMinMd5() {
@@ -113,6 +118,14 @@ public class FileInfo implements Serializable {
 
     public void setMinMd5(String minMd5) {
         this.minMd5 = minMd5;
+    }
+
+    public String getPreview() {
+        return preview;
+    }
+
+    public void setPreview(String preview) {
+        this.preview = preview;
     }
 
     public String getMinPreview() {
@@ -153,11 +166,12 @@ public class FileInfo implements Serializable {
         FileInfo other = (FileInfo) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getMd5() == null ? other.getMd5() == null : this.getMd5().equals(other.getMd5()))
-            && (this.getSuffix() == null ? other.getSuffix() == null : this.getSuffix().equals(other.getSuffix()))
+            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
+            && (this.getCategory() == null ? other.getCategory() == null : this.getCategory().equals(other.getCategory()))
             && (this.getSize() == null ? other.getSize() == null : this.getSize().equals(other.getSize()))
-            && (this.getPreview() == null ? other.getPreview() == null : this.getPreview().equals(other.getPreview()))
+            && (this.getMd5() == null ? other.getMd5() == null : this.getMd5().equals(other.getMd5()))
             && (this.getMinMd5() == null ? other.getMinMd5() == null : this.getMinMd5().equals(other.getMinMd5()))
+            && (this.getPreview() == null ? other.getPreview() == null : this.getPreview().equals(other.getPreview()))
             && (this.getMinPreview() == null ? other.getMinPreview() == null : this.getMinPreview().equals(other.getMinPreview()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
@@ -169,11 +183,12 @@ public class FileInfo implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getMd5() == null) ? 0 : getMd5().hashCode());
-        result = prime * result + ((getSuffix() == null) ? 0 : getSuffix().hashCode());
+        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
+        result = prime * result + ((getCategory() == null) ? 0 : getCategory().hashCode());
         result = prime * result + ((getSize() == null) ? 0 : getSize().hashCode());
-        result = prime * result + ((getPreview() == null) ? 0 : getPreview().hashCode());
+        result = prime * result + ((getMd5() == null) ? 0 : getMd5().hashCode());
         result = prime * result + ((getMinMd5() == null) ? 0 : getMinMd5().hashCode());
+        result = prime * result + ((getPreview() == null) ? 0 : getPreview().hashCode());
         result = prime * result + ((getMinPreview() == null) ? 0 : getMinPreview().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
@@ -188,11 +203,12 @@ public class FileInfo implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", md5=").append(md5);
-        sb.append(", suffix=").append(suffix);
+        sb.append(", type=").append(type);
+        sb.append(", category=").append(category);
         sb.append(", size=").append(size);
-        sb.append(", preview=").append(preview);
+        sb.append(", md5=").append(md5);
         sb.append(", minMd5=").append(minMd5);
+        sb.append(", preview=").append(preview);
         sb.append(", minPreview=").append(minPreview);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
