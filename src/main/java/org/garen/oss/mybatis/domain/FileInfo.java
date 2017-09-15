@@ -53,6 +53,16 @@ public class FileInfo implements Serializable {
     private String minPreview;
 
     /**
+     * 操作人编码
+     */
+    private String operatorCode;
+
+    /**
+     * 操作人姓名
+     */
+    private String operatorName;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -136,6 +146,22 @@ public class FileInfo implements Serializable {
         this.minPreview = minPreview;
     }
 
+    public String getOperatorCode() {
+        return operatorCode;
+    }
+
+    public void setOperatorCode(String operatorCode) {
+        this.operatorCode = operatorCode;
+    }
+
+    public String getOperatorName() {
+        return operatorName;
+    }
+
+    public void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -173,6 +199,8 @@ public class FileInfo implements Serializable {
             && (this.getMinMd5() == null ? other.getMinMd5() == null : this.getMinMd5().equals(other.getMinMd5()))
             && (this.getPreview() == null ? other.getPreview() == null : this.getPreview().equals(other.getPreview()))
             && (this.getMinPreview() == null ? other.getMinPreview() == null : this.getMinPreview().equals(other.getMinPreview()))
+            && (this.getOperatorCode() == null ? other.getOperatorCode() == null : this.getOperatorCode().equals(other.getOperatorCode()))
+            && (this.getOperatorName() == null ? other.getOperatorName() == null : this.getOperatorName().equals(other.getOperatorName()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
@@ -190,6 +218,8 @@ public class FileInfo implements Serializable {
         result = prime * result + ((getMinMd5() == null) ? 0 : getMinMd5().hashCode());
         result = prime * result + ((getPreview() == null) ? 0 : getPreview().hashCode());
         result = prime * result + ((getMinPreview() == null) ? 0 : getMinPreview().hashCode());
+        result = prime * result + ((getOperatorCode() == null) ? 0 : getOperatorCode().hashCode());
+        result = prime * result + ((getOperatorName() == null) ? 0 : getOperatorName().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
@@ -210,6 +240,8 @@ public class FileInfo implements Serializable {
         sb.append(", minMd5=").append(minMd5);
         sb.append(", preview=").append(preview);
         sb.append(", minPreview=").append(minPreview);
+        sb.append(", operatorCode=").append(operatorCode);
+        sb.append(", operatorName=").append(operatorName);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

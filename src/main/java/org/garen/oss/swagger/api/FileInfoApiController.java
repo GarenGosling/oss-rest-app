@@ -2,8 +2,10 @@ package org.garen.oss.swagger.api;
 
 
 import io.swagger.annotations.ApiParam;
+import org.garen.oss.service.FileInfoManage;
 import org.garen.oss.swagger.model.FileInfo;
 import org.garen.oss.swagger.model.SuccessModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,24 +18,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class FileInfoApiController implements FileInfoApi {
 
+    @Autowired
+    FileInfoManage fileInfoManage;
+
     public ResponseEntity<SuccessModel> deleteFileInfo(@ApiParam(value = "文件信息ID") @RequestParam(value = "id", required = false) Long id) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.deleteFileInfo(id);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> getAll() {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.getAll();
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> getByMd5(@ApiParam(value = "md5") @RequestParam(value = "md5", required = false) String md5) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.getByMd5(md5);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> getByMinMd5(@ApiParam(value = "minMd5") @RequestParam(value = "minMd5", required = false) String minMd5) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.getByMinMd5(minMd5);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> getByPage(@ApiParam(value = "分页开始索引") @RequestParam(value = "start", required = false) Integer start,
@@ -47,23 +52,23 @@ public class FileInfoApiController implements FileInfoApi {
         @ApiParam(value = "文件缩略图MD5值") @RequestParam(value = "minMd5", required = false) String minMd5,
         @ApiParam(value = "创建时间从") @RequestParam(value = "createTimeBegin", required = false) String createTimeBegin,
         @ApiParam(value = "创建时间至") @RequestParam(value = "createTimeEnd", required = false) String createTimeEnd) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.getByPage(start, length, name, type, category, sizeBegin, sizeEnd, md5, minMd5, createTimeBegin, createTimeEnd);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> getFileInfo(@ApiParam(value = "文件信息ID") @RequestParam(value = "id", required = false) Long id) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.getFileInfo(id);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> saveFileInfo(@ApiParam(value = "文件信息"  ) @RequestBody FileInfo fileInfo) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.saveFileInfo(fileInfo);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
     public ResponseEntity<SuccessModel> updateFileInfo(@ApiParam(value = "文件信息"  ) @RequestBody FileInfo fileInfo) {
-        // do some magic!
-        return new ResponseEntity<SuccessModel>(HttpStatus.OK);
+        SuccessModel successModel = fileInfoManage.updateFileInfo(fileInfo);
+        return new ResponseEntity<SuccessModel>(successModel, HttpStatus.OK);
     }
 
 }

@@ -46,6 +46,52 @@ public class DateUtil {
     }
 
     /**
+     * min time
+     *
+     * @param arg
+     * @return
+     * @throws ParseException
+     */
+    public static Date parseTimeMin(String arg) throws ParseException {
+        return parseDate(arg);
+    }
+
+    /**
+     * max time
+     *
+     * @param arg
+     * @return
+     * @throws ParseException
+     */
+    public static Date parseTimeMax(String arg) throws ParseException {
+        String maxTimeString =  parseDateString(arg)+" 23:59:59";
+        return parseTime(maxTimeString);
+    }
+
+    /**
+     * min time
+     *
+     * @param arg
+     * @return
+     * @throws ParseException
+     */
+    public static String parseTimeMinString(String arg) throws ParseException {
+        return parseTimeString(parseDateString(arg));
+    }
+
+    /**
+     * max time
+     *
+     * @param arg
+     * @return
+     * @throws ParseException
+     */
+    public static String parseTimeMaxString(String arg) throws ParseException {
+        String maxTimeString =  parseDateString(arg)+" 23:59:59";
+        return parseTimeString(maxTimeString);
+    }
+
+    /**
      * arg to date
      *
      * @param arg

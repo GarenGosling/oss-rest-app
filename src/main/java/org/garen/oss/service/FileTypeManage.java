@@ -10,8 +10,6 @@ import org.garen.oss.swagger.model.SuccessModel;
 import org.garen.oss.util.EsapiUtil;
 import org.garen.oss.util.TransferUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -52,9 +50,10 @@ public class FileTypeManage extends BaseManage<Long>{
     }
 
     /**
-     * 根据条件查询
+     * 根据code/name查询
      *
      * @param code
+     * @param name
      * @return
      */
     private FileType getByParam(String code, String name){
