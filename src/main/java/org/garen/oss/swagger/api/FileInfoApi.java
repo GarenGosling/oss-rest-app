@@ -3,7 +3,8 @@ package org.garen.oss.swagger.api;
 
 import io.swagger.annotations.*;
 import org.garen.oss.swagger.model.FileInfo;
-import org.garen.oss.swagger.model.SuccessModel;
+import org.garen.oss.swagger.model.ResponseModel;
+import org.garen.oss.swagger.model.ResponseModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,49 +16,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Api(value = "fileInfo", description = "the fileInfo API")
 public interface FileInfoApi {
 
-    @ApiOperation(value = "删除文件信息", notes = "删除文件信息 ", response = SuccessModel.class, tags={  })
+    @ApiOperation(value = "删除文件信息", notes = "删除文件信息 ", response = ResponseModel.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo",
         method = RequestMethod.DELETE)
-    ResponseEntity<SuccessModel> deleteFileInfo(@ApiParam(value = "文件信息ID") @RequestParam(value = "id", required = false) Long id);
+    ResponseEntity<ResponseModel> deleteFileInfo(@ApiParam(value = "文件信息ID") @RequestParam(value = "id", required = false) Long id);
 
 
-    @ApiOperation(value = "查询全部", notes = "查询全部 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "查询全部", notes = "查询全部 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo/all",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getAll();
+    ResponseEntity<ResponseModel> getAll();
 
 
-    @ApiOperation(value = "通过md5查询", notes = "通过md5查询 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "通过md5查询", notes = "通过md5查询 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo/md5",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getByMd5(@ApiParam(value = "md5") @RequestParam(value = "md5", required = false) String md5);
+    ResponseEntity<ResponseModel> getByMd5(@ApiParam(value = "md5") @RequestParam(value = "md5", required = false) String md5);
 
 
-    @ApiOperation(value = "通过minMd5查询", notes = "通过名称查询 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "通过minMd5查询", notes = "通过名称查询 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo/minMd5",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getByMinMd5(@ApiParam(value = "minMd5") @RequestParam(value = "minMd5", required = false) String minMd5);
+    ResponseEntity<ResponseModel> getByMinMd5(@ApiParam(value = "minMd5") @RequestParam(value = "minMd5", required = false) String minMd5);
 
 
-    @ApiOperation(value = "分页查询文件信息", notes = "分页查询文件类型 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "分页查询文件信息", notes = "分页查询文件类型 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo/page",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getByPage(@ApiParam(value = "分页开始索引") @RequestParam(value = "start", required = false) Integer start,
+    ResponseEntity<ResponseModel> getByPage(@ApiParam(value = "分页开始索引") @RequestParam(value = "start", required = false) Integer start,
                                            @ApiParam(value = "每页数量") @RequestParam(value = "length", required = false) Integer length,
                                            @ApiParam(value = "文件名称") @RequestParam(value = "name", required = false) String name,
                                            @ApiParam(value = "文件类型") @RequestParam(value = "type", required = false) String type,
@@ -70,34 +71,34 @@ public interface FileInfoApi {
                                            @ApiParam(value = "创建时间至") @RequestParam(value = "createTimeEnd", required = false) String createTimeEnd);
 
 
-    @ApiOperation(value = "ID查询", notes = "ID查询 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "ID查询", notes = "ID查询 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo",
         method = RequestMethod.GET)
-    ResponseEntity<SuccessModel> getFileInfo(@ApiParam(value = "文件信息ID") @RequestParam(value = "id", required = false) Long id);
+    ResponseEntity<ResponseModel> getFileInfo(@ApiParam(value = "文件信息ID") @RequestParam(value = "id", required = false) Long id);
 
 
-    @ApiOperation(value = "新增文件信息", notes = "新增文件信息 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "新增文件信息", notes = "新增文件信息 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<SuccessModel> saveFileInfo(@ApiParam(value = "文件信息") @RequestBody FileInfo fileInfo);
+    ResponseEntity<ResponseModel> saveFileInfo(@ApiParam(value = "文件信息") @RequestBody FileInfo fileInfo);
 
 
-    @ApiOperation(value = "修改文件信息", notes = "修改文件信息 ", response = SuccessModel.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful response", response = SuccessModel.class),
-        @ApiResponse(code = 200, message = "unexpected error", response = SuccessModel.class) })
+    @ApiOperation(value = "修改文件信息", notes = "修改文件信息 ", response = ResponseModel.class, tags={  })
+    @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
+        @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
     @RequestMapping(value = "/fileInfo",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<SuccessModel> updateFileInfo(@ApiParam(value = "文件信息") @RequestBody FileInfo fileInfo);
+    ResponseEntity<ResponseModel> updateFileInfo(@ApiParam(value = "文件信息") @RequestBody FileInfo fileInfo);
 
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ErrorModel
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-07-09T02:21:06.504Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-02-22T06:43:59.467Z")
 
 public class ErrorModel {
   @JsonProperty("code")
@@ -16,9 +16,6 @@ public class ErrorModel {
 
   @JsonProperty("message")
   private String message = null;
-
-  @JsonProperty("data")
-  private Object data = null;
 
   public ErrorModel code(Integer code) {
     this.code = code;
@@ -56,24 +53,6 @@ public class ErrorModel {
     this.message = message;
   }
 
-  public ErrorModel data(Object data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(value = "")
-  public Object getData() {
-    return data;
-  }
-
-  public void setData(Object data) {
-    this.data = data;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -85,23 +64,21 @@ public class ErrorModel {
     }
     ErrorModel errorModel = (ErrorModel) o;
     return Objects.equals(this.code, errorModel.code) &&
-        Objects.equals(this.message, errorModel.message) &&
-        Objects.equals(this.data, errorModel.data);
+        Objects.equals(this.message, errorModel.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, data);
+    return Objects.hash(code, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorModel {\n");
-    
+
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,47 +1,42 @@
-package org.garen.oss.service.validate;
+package org.garen.oss.swagger.api.Valid;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.protocol.HTTP;
-
 import org.garen.oss.swagger.model.FileType;
-import org.garen.oss.swagger.model.SuccessModel;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 /**
- * FileTypeManage的验证类
+ * 文件类型接口入参验证类
  *
  * @author Garen Gosling
- * @create 2017-09-14 20:47
+ * @create 2017-09-16 10:11
  * @since v1.0
  */
 @Component
-public class FileTypeManageValidate extends BaseValidate{
-
+public class FileTypeValid extends BaseValid{
     /**
      * 新增文件类型，验证参数
      *
      * @param fileType
      * @return
      */
-    public SuccessModel saveFileTypeValidate(FileType fileType){
+    public String saveFileTypeValid(FileType fileType){
         if(fileType == null){
-            return validateFailResponse();
+            return paramNullMsg();
         }
         if(StringUtils.isBlank(fileType.getName())){
-            return validateFailResponse("名称");
+            return emptyMsg("名称");
         }
         if(StringUtils.isBlank(fileType.getCode())){
-            return validateFailResponse("编码");
+            return emptyMsg("编码");
         }
         if(StringUtils.isBlank(fileType.getType())){
-            return validateFailResponse("分类");
+            return emptyMsg("分类");
         }
         if(fileType.getMaxSize() == null){
-            return validateFailResponse("最大允许的文件大小");
+            return emptyMsg("最大允许的文件大小");
         }
         if(fileType.getAvailable() == null){
-            return validateFailResponse("是否使用");
+            return emptyMsg("是否使用");
         }
         return null;
     }
@@ -52,19 +47,19 @@ public class FileTypeManageValidate extends BaseValidate{
      * @param fileType
      * @return
      */
-    public SuccessModel updateFileTypeValidate(FileType fileType){
+    public String updateFileTypeValid(FileType fileType){
         if(fileType == null){
-            return validateFailResponse("修改的对象");
+            return paramNullMsg();
         }
         if(fileType.getId() == null || fileType.getId() == 0){
-            return validateFailResponse("id");
+            return emptyMsg("id");
         }
         if(StringUtils.isBlank(fileType.getName())
                 && StringUtils.isBlank(fileType.getCode())
                 && StringUtils.isBlank(fileType.getType())
                 && fileType.getMaxSize() == null
                 && fileType.getAvailable() == null){
-            return validateFailResponse("修改的参数");
+            return paramNullMsg();
         }
         return null;
     }
@@ -75,9 +70,9 @@ public class FileTypeManageValidate extends BaseValidate{
      * @param id
      * @return
      */
-    public SuccessModel idValidate(Long id){
+    public String idValid(Long id){
         if(id == null){
-            return validateFailResponse("id");
+            return emptyMsg("id");
         }
         return null;
     }
@@ -88,9 +83,9 @@ public class FileTypeManageValidate extends BaseValidate{
      * @param code
      * @return
      */
-    public SuccessModel codeValidate(String code){
+    public String codeValid(String code){
         if(StringUtils.isBlank(code)){
-            return validateFailResponse("code");
+            return emptyMsg("code");
         }
         return null;
     }
@@ -101,11 +96,11 @@ public class FileTypeManageValidate extends BaseValidate{
      * @param name
      * @return
      */
-    public SuccessModel nameValidate(String name){
+    public String nameValid(String name){
         if(StringUtils.isBlank(name)){
-            return validateFailResponse("name");
+            return emptyMsg("name");
         }
         return null;
     }
-
+    
 }

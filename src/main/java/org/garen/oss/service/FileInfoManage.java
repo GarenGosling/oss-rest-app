@@ -6,8 +6,6 @@ import org.apache.ibatis.session.RowBounds;
 import org.garen.oss.mybatis.domain.FileInfo;
 import org.garen.oss.mybatis.domain.FileInfoExample;
 import org.garen.oss.mybatis.service.FileInfoService;
-import org.garen.oss.service.validate.FileInfoManageValidate;
-import org.garen.oss.swagger.model.SuccessModel;
 import org.garen.oss.util.EsapiUtil;
 import org.garen.oss.util.TransferUtil;
 import org.garen.oss.util.date.DateUtil;
@@ -30,8 +28,6 @@ import java.util.Map;
 public class FileInfoManage extends BaseManage<Long>{
     @Autowired
     FileInfoService<FileInfo, FileInfoExample, Long> service;
-    @Autowired
-    FileInfoManageValidate fileInfoManageValidate;
 
     @Override
     public FileInfoService<FileInfo, FileInfoExample, Long> getService() {
@@ -64,7 +60,7 @@ public class FileInfoManage extends BaseManage<Long>{
             criteria.andMd5EqualTo(EsapiUtil.sql(md5));
         }
         if(StringUtils.isNotBlank(minMd5)){
-            criteria.andNameLike("%" + EsapiUtil.sql(minMd5) + "%");
+            criteria.andMinMd5EqualTo(EsapiUtil.sql(minMd5));
         }
         List<FileInfo> fileInfos = getService().findBy(example);
         FileInfo fileInfo = null;
@@ -197,20 +193,32 @@ public class FileInfoManage extends BaseManage<Long>{
      * @param fileInfo
      * @return
      */
-    public SuccessModel saveFileInfo(org.garen.oss.swagger.model.FileInfo fileInfo){
-        // 验证
-        SuccessModel successModel = fileInfoManageValidate.saveFileInfoValidate(fileInfo);
-        if(successModel != null){
-            return successModel;
-        }
+    public int saveFileInfo(org.garen.oss.swagger.model.FileInfo fileInfo){
         // 类型转换
         FileInfo dest = transfer(fileInfo);
         // 处理业务
         dest.setOperatorCode("0");
         dest.setOperatorName("系统");
         dest.setCreateTime(new Date());
-        int i = create(dest);
-        return new SuccessModel().message(SAVE_SUCCESS + i);
+        return create(dest);
+    }
+
+    /**
+     * 新增
+     *
+     * @param fileInfoParam
+     * @return
+     */
+    public FileInfo saveFileInfo2(org.garen.oss.swagger.model.FileInfo fileInfoParam){
+        if(fileInfoParam == null){
+            return null;
+        }
+        int i = saveFileInfo(fileInfoParam);
+        if(i == 1){
+            FileInfo fileInfo = getByMd5(fileInfoParam.getMd5());
+            return fileInfo;
+        }
+        return null;
     }
 
     /**
@@ -219,62 +227,15 @@ public class FileInfoManage extends BaseManage<Long>{
      * @param fileInfo
      * @return
      */
-    public SuccessModel updateFileInfo(org.garen.oss.swagger.model.FileInfo fileInfo){
-        // 验证
-        SuccessModel successModel = fileInfoManageValidate.updateFileInfoValidate(fileInfo);
-        if(successModel != null){
-            return successModel;
-        }
+    public int updateFileInfo(org.garen.oss.swagger.model.FileInfo fileInfo){
         // 类型转换
         FileInfo dest = transfer(fileInfo);
         // 处理业务
         dest.setOperatorCode("0");
         dest.setOperatorName("系统");
-        int i = modify(dest);
-        return new SuccessModel().message(UPDATE_SUCCESS + i);
+        return modify(dest);
     }
 
-    /**
-     * 删除
-     *
-     * @param id
-     * @return
-     */
-    public SuccessModel deleteFileInfo(Long id){
-        // 验证
-        SuccessModel successModel = fileInfoManageValidate.idValidate(id);
-        if(successModel != null){
-            return successModel;
-        }
-        int i = removeById(id);
-        return new SuccessModel().message(DELETE_SUCCESS + i);
-    }
-
-    /**
-     * ID查询
-     *
-     * @param id
-     * @return
-     */
-    public SuccessModel getFileInfo(Long id){
-        // 验证
-        SuccessModel successModel = fileInfoManageValidate.idValidate(id);
-        if(successModel != null){
-            return successModel;
-        }
-        FileInfo fileInfo = findById(id);
-        return new SuccessModel().message(GET_SUCCESS).data(fileInfo);
-    }
-
-    /**
-     * 查询全部
-     *
-     * @return
-     */
-    public SuccessModel getAll(){
-        List<FileInfo> fileInfoList = getService().findAll();
-        return new SuccessModel().message(GET_ALL_SUCCESS).data(fileInfoList);
-    }
 
     /**
      * 编码查询
@@ -282,14 +243,8 @@ public class FileInfoManage extends BaseManage<Long>{
      * @param md5
      * @return
      */
-    public SuccessModel getByMd5(String md5){
-        // 验证
-        SuccessModel successModel = fileInfoManageValidate.md5Validate(md5);
-        if(successModel != null){
-            return successModel;
-        }
-        FileInfo fileInfo = getByParam(md5, null);
-        return new SuccessModel().message("编码" + GET_GENERAL_SUCCESS).data(fileInfo);
+    public FileInfo getByMd5(String md5){
+        return getByParam(md5, null);
     }
 
     /**
@@ -298,14 +253,8 @@ public class FileInfoManage extends BaseManage<Long>{
      * @param minMd5
      * @return
      */
-    public SuccessModel getByMinMd5(String minMd5){
-        // 验证
-        SuccessModel successModel = fileInfoManageValidate.minMd5Validate(minMd5);
-        if(successModel != null){
-            return successModel;
-        }
-        FileInfo fileInfo = getByParam(minMd5, null);
-        return new SuccessModel().message("编码" + GET_GENERAL_SUCCESS).data(fileInfo);
+    public FileInfo getByMinMd5(String minMd5){
+        return getByParam(null, minMd5);
     }
 
     /**
@@ -316,7 +265,7 @@ public class FileInfoManage extends BaseManage<Long>{
      * @param name
      * @return
      */
-    public SuccessModel getByPage(Integer start,
+    public Map getByPage(Integer start,
                                   Integer length,
                                   String name,
                                   String type,
@@ -329,8 +278,7 @@ public class FileInfoManage extends BaseManage<Long>{
                                   String createTimeEnd){
         List<FileInfo> list = getPageList(start, length, name, type, category, sizeBegin, sizeEnd, md5, minMd5, createTimeBegin, createTimeEnd);
         int count = getPageCount(name, type, category, sizeBegin, sizeEnd, md5, minMd5, createTimeBegin, createTimeEnd);
-        Map page = page(list, count);
-        return new SuccessModel().message(GET_PAGE_SUCCESS).data(page);
+        return page(list, count);
     }
 
 }

@@ -1,19 +1,18 @@
-package org.garen.oss.service.validate;
+package org.garen.oss.swagger.api.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.garen.oss.swagger.model.FileInfo;
-import org.garen.oss.swagger.model.SuccessModel;
 import org.springframework.stereotype.Component;
 
 /**
- * FileTypeManage的验证类
+ * 文件信息接口入参验证类
  *
  * @author Garen Gosling
- * @create 2017-09-14 20:47
+ * @create 2017-09-16 10:10
  * @since v1.0
  */
 @Component
-public class FileInfoManageValidate extends BaseValidate{
+public class FileInfoValid extends BaseValid {
 
     /**
      * 新增文件信息，验证参数
@@ -21,27 +20,27 @@ public class FileInfoManageValidate extends BaseValidate{
      * @param fileInfo
      * @return
      */
-    public SuccessModel saveFileInfoValidate(FileInfo fileInfo){
+    public String saveFileInfoValid(FileInfo fileInfo){
         if(fileInfo == null){
-            return validateFailResponse();
+            return paramNullMsg();
         }
         if(StringUtils.isBlank(fileInfo.getName())){
-            return validateFailResponse("名称");
+            return emptyMsg("名称");
         }
         if(StringUtils.isBlank(fileInfo.getType())){
-            return validateFailResponse("文件类型");
+            return emptyMsg("文件类型");
         }
         if(StringUtils.isBlank(fileInfo.getCategory())){
-            return validateFailResponse("文件种类");
+            return emptyMsg("文件种类");
         }
         if(fileInfo.getSize() == null){
-            return validateFailResponse("文件大小");
+            return emptyMsg("文件大小");
         }
         if(StringUtils.isBlank(fileInfo.getMd5())){
-            return validateFailResponse("文件MD5值");
+            return emptyMsg("文件MD5值");
         }
         if(StringUtils.isBlank(fileInfo.getPreview())){
-            return validateFailResponse("文件下载路径");
+            return emptyMsg("文件下载路径");
         }
         return null;
     }
@@ -52,12 +51,12 @@ public class FileInfoManageValidate extends BaseValidate{
      * @param fileInfo
      * @return
      */
-    public SuccessModel updateFileInfoValidate(FileInfo fileInfo){
+    public String updateFileInfoValid(FileInfo fileInfo){
         if(fileInfo == null){
-            return validateFailResponse("修改的对象");
+            return paramNullMsg();
         }
         if(fileInfo.getId() == null || fileInfo.getId() == 0){
-            return validateFailResponse("id");
+            return emptyMsg("id");
         }
         if(StringUtils.isBlank(fileInfo.getName())
                 && StringUtils.isBlank(fileInfo.getType())
@@ -68,7 +67,7 @@ public class FileInfoManageValidate extends BaseValidate{
                 && StringUtils.isBlank(fileInfo.getPreview())
                 && StringUtils.isBlank(fileInfo.getMinPreview())
                 ){
-            return validateFailResponse("修改的参数");
+            return paramNullMsg();
         }
         return null;
     }
@@ -79,9 +78,9 @@ public class FileInfoManageValidate extends BaseValidate{
      * @param id
      * @return
      */
-    public SuccessModel idValidate(Long id){
+    public String idValid(Long id){
         if(id == null){
-            return validateFailResponse("id");
+            return emptyMsg("id");
         }
         return null;
     }
@@ -92,9 +91,9 @@ public class FileInfoManageValidate extends BaseValidate{
      * @param md5
      * @return
      */
-    public SuccessModel md5Validate(String md5){
+    public String md5Valid(String md5){
         if(StringUtils.isBlank(md5)){
-            return validateFailResponse("md5");
+            return emptyMsg("md5");
         }
         return null;
     }
@@ -105,11 +104,12 @@ public class FileInfoManageValidate extends BaseValidate{
      * @param minMd5
      * @return
      */
-    public SuccessModel minMd5Validate(String minMd5){
+    public String minMd5Valid(String minMd5){
         if(StringUtils.isBlank(minMd5)){
-            return validateFailResponse("minMd5");
+            return emptyMsg("minMd5");
         }
         return null;
     }
-
+    
+    
 }

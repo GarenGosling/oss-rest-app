@@ -1,10 +1,16 @@
 package org.garen.oss.mybatis.service;
 
+import org.apache.commons.lang3.StringUtils;
+import org.garen.oss.cache.FileTypesCache;
+import org.garen.oss.mybatis.domain.FileType;
 import org.garen.oss.mybatis.mapper.FileTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/9/14.

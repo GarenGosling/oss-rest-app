@@ -5,9 +5,9 @@ package org.garen.oss.service;
 
 import org.garen.oss.mybatis.exception.DBException;
 import org.garen.oss.mybatis.service.CommonsService;
+import org.garen.oss.swagger.model.BaseModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -24,14 +24,6 @@ import java.util.Map;
 public abstract class BaseManage<PK extends Serializable> {
 
     protected Logger LOGGER = LoggerFactory.getLogger(getClass());
-
-    protected static final String SAVE_SUCCESS = "新增文件类型成功,新增数量： ";
-    protected static final String UPDATE_SUCCESS = "修改文件类型成功，修改数量： ";
-    protected static final String DELETE_SUCCESS = "删除文件类型成功，删除数量： ";
-    protected static final String GET_SUCCESS = "ID查询成功";
-    protected static final String GET_ALL_SUCCESS = "查询全部成功";
-    protected static final String GET_PAGE_SUCCESS = "分页查询全部成功";
-    protected static final String GET_GENERAL_SUCCESS = "查询成功";
     protected static final Integer START = 0;
     protected static final Integer LENGTH = 10;
 

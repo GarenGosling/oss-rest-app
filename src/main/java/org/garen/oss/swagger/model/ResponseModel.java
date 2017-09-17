@@ -1,19 +1,19 @@
 package org.garen.oss.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-import org.springframework.http.HttpStatus;
-
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
- * SuccessModel
+ * ResponseModel
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-02-22T09:51:09.457Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-09-15T20:53:50.943Z")
 
-public class SuccessModel {
+public class ResponseModel   {
   @JsonProperty("code")
-  private Integer code = HttpStatus.OK.value();
+  private Integer code = null;
 
   @JsonProperty("message")
   private String message = null;
@@ -21,8 +21,7 @@ public class SuccessModel {
   @JsonProperty("data")
   private Object data = null;
 
-
-  public SuccessModel code(Integer code) {
+  public ResponseModel code(Integer code) {
     this.code = code;
     return this;
   }
@@ -40,8 +39,7 @@ public class SuccessModel {
     this.code = code;
   }
 
-
-  public SuccessModel message(String message) {
+  public ResponseModel message(String message) {
     this.message = message;
     return this;
   }
@@ -59,7 +57,7 @@ public class SuccessModel {
     this.message = message;
   }
 
-  public SuccessModel data(Object data) {
+  public ResponseModel data(String data) {
     this.data = data;
     return this;
   }
@@ -86,10 +84,10 @@ public class SuccessModel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SuccessModel successModel = (SuccessModel) o;
-    return Objects.equals(this.code, successModel.code) &&
-        Objects.equals(this.message, successModel.message) &&
-        Objects.equals(this.data, successModel.data);
+    ResponseModel responseModel = (ResponseModel) o;
+    return Objects.equals(this.code, responseModel.code) &&
+        Objects.equals(this.message, responseModel.message) &&
+        Objects.equals(this.data, responseModel.data);
   }
 
   @Override
@@ -100,8 +98,8 @@ public class SuccessModel {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SuccessModel {\n");
-
+    sb.append("class ResponseModel {\n");
+    
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
