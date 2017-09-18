@@ -20,7 +20,7 @@ public interface UploadApi {
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Successful response", response = ResponseModel.class),
         @ApiResponse(code = 200, message = "unexpected error", response = ResponseModel.class) })
-    @RequestMapping(value = "/fileupload",
+    @RequestMapping(value = "/upload",
         produces = { "application/json" },
         consumes = { "multipart/form-data" },
         method = RequestMethod.POST)

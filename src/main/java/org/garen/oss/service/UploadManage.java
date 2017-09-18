@@ -105,8 +105,10 @@ public class UploadManage {
             }
         }
         // 2、持久化文件信息
-        fileInfoParam.setMinMd5(minMd5(fileInfoParam.getMd5()));
-        fileInfoParam.setMinPreview(cacheThumbnailImage.length() + "");
+        if(cacheThumbnailImage != null){
+            fileInfoParam.setMinMd5(minMd5(fileInfoParam.getMd5()));
+            fileInfoParam.setMinSize(Integer.parseInt(cacheThumbnailImage.length()+""));
+        }
         fileInfo = fileInfoManage.saveFileInfo2(fileInfoParam);
         // 3、验证保存
         if(fileInfo == null) {

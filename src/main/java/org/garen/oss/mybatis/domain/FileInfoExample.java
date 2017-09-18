@@ -455,6 +455,66 @@ public class FileInfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andMinSizeIsNull() {
+            addCriterion("min_size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeIsNotNull() {
+            addCriterion("min_size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeEqualTo(Integer value) {
+            addCriterion("min_size =", value, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeNotEqualTo(Integer value) {
+            addCriterion("min_size <>", value, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeGreaterThan(Integer value) {
+            addCriterion("min_size >", value, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("min_size >=", value, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeLessThan(Integer value) {
+            addCriterion("min_size <", value, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeLessThanOrEqualTo(Integer value) {
+            addCriterion("min_size <=", value, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeIn(List<Integer> values) {
+            addCriterion("min_size in", values, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeNotIn(List<Integer> values) {
+            addCriterion("min_size not in", values, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeBetween(Integer value1, Integer value2) {
+            addCriterion("min_size between", value1, value2, "minSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinSizeNotBetween(Integer value1, Integer value2) {
+            addCriterion("min_size not between", value1, value2, "minSize");
+            return (Criteria) this;
+        }
+
         public Criteria andMd5IsNull() {
             addCriterion("md5 is null");
             return (Criteria) this;

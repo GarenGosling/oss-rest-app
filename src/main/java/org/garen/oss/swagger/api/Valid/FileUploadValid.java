@@ -1,18 +1,10 @@
 package org.garen.oss.swagger.api.Valid;
 
-import org.apache.commons.lang3.StringUtils;
-import org.garen.oss.cache.FileTypesCache;
-import org.garen.oss.exception.BusinessException;
-import org.garen.oss.mybatis.domain.FileInfo;
 import org.garen.oss.mybatis.domain.FileType;
-import org.garen.oss.util.JsonMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 /**
  * 上传接口入参验证类

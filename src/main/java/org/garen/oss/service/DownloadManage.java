@@ -46,28 +46,25 @@ public class DownloadManage {
             FileInfo fileInfo = null;
             boolean isThumbnail = false;
             int fileSize = 0;
+            String fileName = "";
+            String fileFullName = "";
             if(md5.indexOf("THUMBNAIL") > -1){
                 isThumbnail = true;
                 fileInfo = fileInfoManage.getByMinMd5(md5);
-                fileSize = Integer.parseInt(fileInfo.getMinPreview());
+                fileSize = fileInfo.getMinSize();
+                fileName = fileInfo.getName()+"-THUMBNAIL.jpg";
+                fileFullName = uploadManage.getCacheFileThumbnailFullName(fileInfo.getCategory(), fileInfo.getMd5(), "jpg");
             }else {
                 fileInfo = fileInfoManage.getByMd5(md5);
                 fileSize = Integer.parseInt(fileInfo.getSize()+"");
+                fileName = fileInfo.getName();
+                fileFullName = uploadManage.getCacheFileFullName(fileInfo.getCategory(), fileInfo.getMd5(), fileInfo.getType());
             }
-
-            String fileName = fileInfo.getName();
-            String cacheFileFullName = uploadManage.getCacheFileFullName(fileInfo.getCategory(), fileInfo.getMd5(), fileInfo.getType());
-            String suffix = fileInfo.getType();
-            if("pdf".equals(suffix)){
-                suffix = "jpg";
-            }
-            String cacheFileThumbnailFullName = uploadManage.getCacheFileThumbnailFullName(fileInfo.getCategory(), fileInfo.getMd5(), suffix);
             // 以流的形式下载文件。
-            String path = isThumbnail?cacheFileThumbnailFullName:cacheFileFullName;
-            InputStream fis = new BufferedInputStream(new FileInputStream(path));
+            InputStream fis = new BufferedInputStream(new FileInputStream(fileFullName));
             byte[] buffer = new byte[fis.available()];
             fis.read(buffer);
-                fis.close();
+            fis.close();
             // 清空response
             response.reset();
             // 设置response的Header

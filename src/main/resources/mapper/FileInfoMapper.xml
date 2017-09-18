@@ -7,6 +7,7 @@
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="size" jdbcType="BIGINT" property="size" />
+    <result column="min_size" jdbcType="INTEGER" property="minSize" />
     <result column="md5" jdbcType="VARCHAR" property="md5" />
     <result column="min_md5" jdbcType="VARCHAR" property="minMd5" />
     <result column="preview" jdbcType="VARCHAR" property="preview" />
@@ -75,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, type, category, size, md5, min_md5, preview, min_preview, operator_code, 
+    id, name, type, category, size, min_size, md5, min_md5, preview, min_preview, operator_code, 
     operator_name, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="org.garen.oss.mybatis.domain.FileInfoExample" resultMap="BaseResultMap">
@@ -121,13 +122,15 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into file_info (name, type, category, 
-      size, md5, min_md5, preview, 
-      min_preview, operator_code, operator_name, 
-      create_time, update_time)
+      size, min_size, md5, 
+      min_md5, preview, min_preview, 
+      operator_code, operator_name, create_time, 
+      update_time)
     values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
-      #{size,jdbcType=BIGINT}, #{md5,jdbcType=VARCHAR}, #{minMd5,jdbcType=VARCHAR}, #{preview,jdbcType=VARCHAR}, 
-      #{minPreview,jdbcType=VARCHAR}, #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{size,jdbcType=BIGINT}, #{minSize,jdbcType=INTEGER}, #{md5,jdbcType=VARCHAR}, 
+      #{minMd5,jdbcType=VARCHAR}, #{preview,jdbcType=VARCHAR}, #{minPreview,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="org.garen.oss.mybatis.domain.FileInfo">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -146,6 +149,9 @@
       </if>
       <if test="size != null">
         size,
+      </if>
+      <if test="minSize != null">
+        min_size,
       </if>
       <if test="md5 != null">
         md5,
@@ -184,6 +190,9 @@
       </if>
       <if test="size != null">
         #{size,jdbcType=BIGINT},
+      </if>
+      <if test="minSize != null">
+        #{minSize,jdbcType=INTEGER},
       </if>
       <if test="md5 != null">
         #{md5,jdbcType=VARCHAR},
@@ -235,6 +244,9 @@
       <if test="record.size != null">
         size = #{record.size,jdbcType=BIGINT},
       </if>
+      <if test="record.minSize != null">
+        min_size = #{record.minSize,jdbcType=INTEGER},
+      </if>
       <if test="record.md5 != null">
         md5 = #{record.md5,jdbcType=VARCHAR},
       </if>
@@ -271,6 +283,7 @@
       type = #{record.type,jdbcType=VARCHAR},
       category = #{record.category,jdbcType=VARCHAR},
       size = #{record.size,jdbcType=BIGINT},
+      min_size = #{record.minSize,jdbcType=INTEGER},
       md5 = #{record.md5,jdbcType=VARCHAR},
       min_md5 = #{record.minMd5,jdbcType=VARCHAR},
       preview = #{record.preview,jdbcType=VARCHAR},
@@ -297,6 +310,9 @@
       </if>
       <if test="size != null">
         size = #{size,jdbcType=BIGINT},
+      </if>
+      <if test="minSize != null">
+        min_size = #{minSize,jdbcType=INTEGER},
       </if>
       <if test="md5 != null">
         md5 = #{md5,jdbcType=VARCHAR},
@@ -331,6 +347,7 @@
       type = #{type,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
       size = #{size,jdbcType=BIGINT},
+      min_size = #{minSize,jdbcType=INTEGER},
       md5 = #{md5,jdbcType=VARCHAR},
       min_md5 = #{minMd5,jdbcType=VARCHAR},
       preview = #{preview,jdbcType=VARCHAR},

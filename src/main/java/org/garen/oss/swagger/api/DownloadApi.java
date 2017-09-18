@@ -7,7 +7,6 @@ import org.garen.oss.swagger.model.ResponseModel;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public interface DownloadApi {
 
     @ApiOperation(value = "下载", notes = "下载 ", response = ResponseModel.class, tags = {})
-    @RequestMapping(value = "/preview/{md5}",
+    @RequestMapping(value = "/download/{md5}",
             method = RequestMethod.GET)
     void download(@ApiParam(value = "md5", required = true) @PathVariable("md5") String md5, HttpServletResponse response);
 

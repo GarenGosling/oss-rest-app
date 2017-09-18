@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * FileInfo
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-09-15T04:56:23.159Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-09-18T02:46:57.436Z")
 
 public class FileInfo   {
   @JsonProperty("id")
@@ -25,6 +25,9 @@ public class FileInfo   {
 
   @JsonProperty("size")
   private Long size = null;
+
+  @JsonProperty("minSize")
+  private Integer minSize = null;
 
   @JsonProperty("md5")
   private String md5 = null;
@@ -128,6 +131,24 @@ public class FileInfo   {
     this.size = size;
   }
 
+  public FileInfo minSize(Integer minSize) {
+    this.minSize = minSize;
+    return this;
+  }
+
+   /**
+   * 缩略图文件大小
+   * @return minSize
+  **/
+  @ApiModelProperty(value = "缩略图文件大小")
+  public Integer getMinSize() {
+    return minSize;
+  }
+
+  public void setMinSize(Integer minSize) {
+    this.minSize = minSize;
+  }
+
   public FileInfo md5(String md5) {
     this.md5 = md5;
     return this;
@@ -215,6 +236,7 @@ public class FileInfo   {
         Objects.equals(this.type, fileInfo.type) &&
         Objects.equals(this.category, fileInfo.category) &&
         Objects.equals(this.size, fileInfo.size) &&
+        Objects.equals(this.minSize, fileInfo.minSize) &&
         Objects.equals(this.md5, fileInfo.md5) &&
         Objects.equals(this.minMd5, fileInfo.minMd5) &&
         Objects.equals(this.preview, fileInfo.preview) &&
@@ -223,7 +245,7 @@ public class FileInfo   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, type, category, size, md5, minMd5, preview, minPreview);
+    return Objects.hash(id, name, type, category, size, minSize, md5, minMd5, preview, minPreview);
   }
 
   @Override
@@ -236,6 +258,7 @@ public class FileInfo   {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    minSize: ").append(toIndentedString(minSize)).append("\n");
     sb.append("    md5: ").append(toIndentedString(md5)).append("\n");
     sb.append("    minMd5: ").append(toIndentedString(minMd5)).append("\n");
     sb.append("    preview: ").append(toIndentedString(preview)).append("\n");
