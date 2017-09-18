@@ -57,7 +57,11 @@ public class DownloadManage {
 
             String fileName = fileInfo.getName();
             String cacheFileFullName = uploadManage.getCacheFileFullName(fileInfo.getCategory(), fileInfo.getMd5(), fileInfo.getType());
-            String cacheFileThumbnailFullName = uploadManage.getCacheFileThumbnailFullName(fileInfo.getCategory(), fileInfo.getMd5(), fileInfo.getType());
+            String suffix = fileInfo.getType();
+            if("pdf".equals(suffix)){
+                suffix = "jpg";
+            }
+            String cacheFileThumbnailFullName = uploadManage.getCacheFileThumbnailFullName(fileInfo.getCategory(), fileInfo.getMd5(), suffix);
             // 以流的形式下载文件。
             String path = isThumbnail?cacheFileThumbnailFullName:cacheFileFullName;
             InputStream fis = new BufferedInputStream(new FileInputStream(path));
