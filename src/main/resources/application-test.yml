@@ -25,6 +25,10 @@ spring:
       port: 5672
       username: guest
       password: guest
+  http:
+      multipart:
+        maxFileSize: 200Mb
+        maxRequestSize: 200Mb
 server:
   port: 9091
   tomcat:
