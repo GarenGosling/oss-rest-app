@@ -1,9 +1,14 @@
 package org.garen;
 
+import org.garen.oss.swagger.ApiOriginFilter;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+
+import javax.servlet.Filter;
 
 
 /**
@@ -13,6 +18,29 @@ import org.springframework.stereotype.Controller;
 @SpringBootApplication
 @MapperScan("org.garen.oss.mybatis.mapper")
 public class OssRun {
+
+    /**
+     * 配置过滤器
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean someFilterRegistration() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(apiOriginFilter());
+        registration.addUrlPatterns("/*");
+        registration.addInitParameter("paramName", "paramValue");
+        registration.setName("apiOriginFilter");
+        return registration;
+    }
+
+    /**
+     * 创建一个bean
+     * @return
+     */
+    @Bean(name = "apiOriginFilter")
+    public Filter apiOriginFilter() {
+        return new ApiOriginFilter();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(OssRun.class, args);
